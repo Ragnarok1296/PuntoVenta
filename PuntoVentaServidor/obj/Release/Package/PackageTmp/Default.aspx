@@ -44,13 +44,13 @@
                 <div class="col-md-5 jumbotron MargenDiv">
                     <h2>Proveedores</h2>
                     <h3>WSDL de proveedores</h3>
-                    <a href="Modules/EntryStats/entrystats" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                    <a href="/WebService/WSProveedores.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
                 </div>
 
                 <div class="col-md-5 jumbotron  MargenDiv">
-                    <h2>Inventario</h2>
-                    <h3>WSDL del inventario</h3>
-                    <a href="Modules/EntryStats/entrystats" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                    <h2>Productos</h2>
+                    <h3>WSDL de productos</h3>
+                    <a href="/WebService/WSProductos.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
                 </div>
             </div>
 
@@ -58,13 +58,13 @@
                 <div class="col-md-5 jumbotron MargenDiv">
                     <h2>Empleados</h2>
                     <h3>WSDL de empleados</h3></p>
-                    <a href="Modules/EntryStats/entrystats" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                    <a href="/WebService/WSEmpleados.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
                 </div>
 
                 <div class="col-md-5 jumbotron  MargenDiv">
                     <h2>Ventas</h2>
                     <p><h3>WSDL de ventas</h3></p>
-                    <a href="Modules/EntryStats/entrystats" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                    <a href="/WebService/WSVentas.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
                 </div>
             </div>
 
