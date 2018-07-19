@@ -206,8 +206,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Departamentos.cs" />
+    <Compile Include="Modelos\Empleados.cs" />
     <Compile Include="Modelos\MySQLConexion.cs" />
+    <Compile Include="Modelos\Productos.cs" />
+    <Compile Include="Modelos\ProductosVentas.cs" />
     <Compile Include="Modelos\Proveedores.cs" />
+    <Compile Include="Modelos\Puesto.cs" />
+    <Compile Include="Modelos\Unidad.cs" />
+    <Compile Include="Modelos\Usuarios.cs" />
+    <Compile Include="Modelos\Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
