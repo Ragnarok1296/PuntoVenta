@@ -5,21 +5,21 @@ using System.Web;
 
 namespace PuntoVentaServidor.Modelos
 {
-    public class Unidad
+    public class Unidades
     {
         private int id;
-        private string medida;
+        private string unidad;
 
-        public Unidad() { }
+        public Unidades() { }
 
         public int Id {
             get => id;
             set => id = value;
         }
 
-        public string Medida {
-            get => medida;
-            set => medida = value;
+        public string Unidad {
+            get => unidad;
+            set => unidad = value;
         }
     }
 }

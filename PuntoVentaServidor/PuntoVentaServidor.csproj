@@ -216,7 +216,7 @@
     <Compile Include="Modelos\ProductosVentas.cs" />
     <Compile Include="Modelos\Proveedores.cs" />
     <Compile Include="Modelos\Puestos.cs" />
-    <Compile Include="Modelos\Unidad.cs" />
+    <Compile Include="Modelos\Unidades.cs" />
     <Compile Include="Modelos\Usuarios.cs" />
     <Compile Include="Modelos\Ventas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

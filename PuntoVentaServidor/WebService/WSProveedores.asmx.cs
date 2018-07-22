@@ -18,10 +18,10 @@ namespace PuntoVentaServidor.WebService
     // [System.Web.Script.Services.ScriptService]
     public class WSProveedores : System.Web.Services.WebService
     {
-        MySQLConexion conexion;
-        Proveedores proveedores;
+        private MySQLConexion conexion;
+        private Proveedores proveedores;
 
-        // Instanciamos la conexion y al proveedor
+        // Instanciamos la conexion y al modelo
         public WSProveedores()
         {
             conexion = new MySQLConexion();
@@ -47,58 +47,60 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public String InsertarProveedores(string json)
+        public Boolean InsertarProveedores(string json)
         {
-            string operacion = "0";
+            Boolean operacion = false;
 
-            //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo de Provedores
+            //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo 
             proveedores = JsonConvert.DeserializeObject<Proveedores>(json);
 
             // Verifico si la conexion es correcta
             if (conexion.connection()) {
 
                 // Creo el query que mandare
-                String query = "call InsertarProveedor('" + proveedores.Id.ToString() + "','" + proveedores.RazonSocial + "','" 
+                String query = "call InsertarProveedor('" + proveedores.RazonSocial + "','" 
                     + proveedores.DireccionFiscal + "','" + proveedores.DireccionUbicacion + "','" 
                     + proveedores.Rfc + "','" + proveedores.NombreContacto + "','" 
                     + proveedores.Telefono + "','" + proveedores.Correo + "')";
 
-                //Mando llamar al metodo para inssertar el cual me devolvera un booleano y asi retorno un 1 si todo salio bien 
+                //Mando llamar al metodo para inssertar el cual me devolvera un booleano 
                 if (conexion.insertar_actualizar_eliminar(query))
-                    operacion = "1";
+                    operacion = true;
             }
 
-            //Retorno un string con un 1 o 0 para saber si la operacion fue exitosa
+            //Retorno un booleano para saber si la operacion fue exitosa
             return operacion;
             
         }
 
         [WebMethod]
-        public String EliminarProveedores(string id)
+        public Boolean EliminarProveedores(int id)
         {
-            string operacion = "0";
+            Boolean operacion = false;
+
+            proveedores.Id = id;
 
             // Verifico si la conexion es correcta
             if (conexion.connection()) {
 
                 // Creo el query que mandare
-                String query = "call EliminarProveedor('" + id + "')";
+                String query = "call EliminarProveedor('" + proveedores.Id.ToString() + "')";
 
-                //Mando llamar al metodo para eliminar el cual me devolvera un booleano y asi retorno un 1 si todo salio bien 
+                //Mando llamar al metodo para eliminar el cual me devolvera un booleano 
                 if (conexion.insertar_actualizar_eliminar(query))
-                    operacion = "1";
+                    operacion = true;
             }
 
-            //Retorno un string con un 1 o 0 para saber si la operacion fue exitosa
+            //Retorno un booleano para saber si la operacion fue exitosa
             return operacion;
         }
 
         [WebMethod]
-        public String ActualizarProveedores(string json)
+        public Boolean ActualizarProveedores(string json)
         {
-            string operacion = "0";
+            Boolean operacion = false;
 
-            //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo de Provedores
+            //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo 
             proveedores = JsonConvert.DeserializeObject<Proveedores>(json);
 
             // Verifico si la conexion es correcta
@@ -110,12 +112,12 @@ namespace PuntoVentaServidor.WebService
                     + proveedores.Rfc + "','" + proveedores.NombreContacto + "','"
                     + proveedores.Telefono + "','" + proveedores.Correo + "')";
 
-                //Mando llamar al metodo para actualizar el cual me devolvera un booleano y asi retorno un 1 si todo salio bien 
+                //Mando llamar al metodo para actualizar el cual me devolvera un booleano
                 if (conexion.insertar_actualizar_eliminar(query))
-                    operacion = "1";
+                    operacion = true;
             }
 
-            //Retorno un string con un 1 o 0 para saber si la operacion fue exitosa
+            //Retorno un booleano para saber si la operacion fue exitosa
             return operacion;
         }
 
