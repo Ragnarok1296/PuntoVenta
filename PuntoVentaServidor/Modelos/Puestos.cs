@@ -5,21 +5,21 @@ using System.Web;
 
 namespace PuntoVentaServidor.Modelos
 {
-    public class Puesto
+    public class Puestos
     {
         private int id;
-        private string puestos;
+        private string puesto;
 
-        public Puesto() { }
+        public Puestos() { }
 
         public int Id {
             get => id;
             set => id = value;
         }
 
-        public string Puestos {
-            get => puestos;
-            set => puestos = value;
+        public string Puesto {
+            get => puesto;
+            set => puesto = value;
         }
     }
 }

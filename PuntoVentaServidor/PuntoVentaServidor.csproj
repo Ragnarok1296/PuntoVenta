@@ -155,9 +155,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="WebService\WSDepartamentos.asmx" />
     <Content Include="WebService\WSEmpleados.asmx" />
     <Content Include="WebService\WSProductos.asmx" />
     <Content Include="WebService\WSProveedores.asmx" />
+    <Content Include="WebService\WSPuestos.asmx" />
+    <Content Include="WebService\WSUnidades.asmx" />
     <Content Include="WebService\WSVentas.asmx" />
     <None Include="Properties\PublishProfiles\PuntoVentaServidor - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -212,7 +215,7 @@
     <Compile Include="Modelos\Productos.cs" />
     <Compile Include="Modelos\ProductosVentas.cs" />
     <Compile Include="Modelos\Proveedores.cs" />
-    <Compile Include="Modelos\Puesto.cs" />
+    <Compile Include="Modelos\Puestos.cs" />
     <Compile Include="Modelos\Unidad.cs" />
     <Compile Include="Modelos\Usuarios.cs" />
     <Compile Include="Modelos\Ventas.cs" />
@@ -224,6 +227,10 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
+    <Compile Include="WebService\WSDepartamentos.asmx.cs">
+      <DependentUpon>WSDepartamentos.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="WebService\WSEmpleados.asmx.cs">
       <DependentUpon>WSEmpleados.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -234,6 +241,14 @@
     </Compile>
     <Compile Include="WebService\WSProveedores.asmx.cs">
       <DependentUpon>WSProveedores.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\WSPuestos.asmx.cs">
+      <DependentUpon>WSPuestos.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebService\WSUnidades.asmx.cs">
+      <DependentUpon>WSUnidades.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WebService\WSVentas.asmx.cs">
