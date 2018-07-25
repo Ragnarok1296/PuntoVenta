@@ -68,6 +68,29 @@
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-5 jumbotron MargenDiv">
+                    <h2>Unidades</h2>
+                    <h3>WSDL de unidades</h3></p>
+                    <a href="/WebService/WSUnidades.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                </div>
+
+                <div class="col-md-5 jumbotron  MargenDiv">
+                    <h2>Puestos</h2>
+                    <p><h3>WSDL de puestos</h3></p>
+                    <a href="/WebService/WSPuestos.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5 jumbotron MargenDiv">
+                    <h2>Departamentos</h2>
+                    <h3>WSDL de dempartamentos</h3></p>
+                    <a href="/WebService/WSDepartamentos.asmx" class="btn btn-primary btn-lg">Ir a &raquo;</a>
+                </div>
+
+            </div>
+
         </div>
     </form>
 </body>
