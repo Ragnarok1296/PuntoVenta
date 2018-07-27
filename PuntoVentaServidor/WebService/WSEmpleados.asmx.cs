@@ -55,7 +55,7 @@ namespace PuntoVentaServidor.WebService
             Boolean operacion = false;
 
             //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo
-            empleados = JsonConvert.DeserializeObject<Empleados>(json);
+            empleados = JsonConvert.DeserializeObject<Empleados>(json.Replace("[", "").Replace("]", ""));
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
@@ -106,8 +106,8 @@ namespace PuntoVentaServidor.WebService
             Boolean operacion = false;
 
             //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo
-            empleados = JsonConvert.DeserializeObject<Empleados>(jsonEmpleados);
-            usuarios = JsonConvert.DeserializeObject<Usuarios>(jsonUsuarios);
+            empleados = JsonConvert.DeserializeObject<Empleados>(jsonEmpleados.Replace("[", "").Replace("]", ""));
+            usuarios = JsonConvert.DeserializeObject<Usuarios>(jsonUsuarios.Replace("[", "").Replace("]", ""));
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
@@ -167,7 +167,53 @@ namespace PuntoVentaServidor.WebService
             }
 
             //Retorno la cadena con formato json
-            return json;
+            return json.Replace("[", "").Replace("]", "");
+        }
+
+        [WebMethod]
+        public String UsuarioDatos(string usuario)
+        {
+            string json = "";
+
+            usuarios.Usuario = usuario;
+
+            // Verifico si la conexion es correcta
+            if (conexion.connection())
+            {
+
+                // Creo el query que mandare
+                String query = "call UsuarioDatos('" + usuarios.Usuario + "')";
+
+                // Mando llamar el metodo de MYSQLConexion el cual me devuelve un datatable y lo serializo
+                json = JsonConvert.SerializeObject(conexion.consulta_busqueda(query));
+            }
+
+            //Retorno la cadena con formato json
+            return json.Replace("[", "").Replace("]", "");
+        }
+
+        [WebMethod]
+        public Boolean UsuarioActualizar(string json)
+        {
+            Boolean operacion = false;
+
+            //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo
+            usuarios = JsonConvert.DeserializeObject<Usuarios>(json.Replace("[", "").Replace("]", ""));
+
+            // Verifico si la conexion es correcta
+            if (conexion.connection())
+            {
+
+                String query = "call UsuarioActualizar('" + usuarios.Id.ToString() + "','" + usuarios.Usuario + "','"
+                    + usuarios.Password + "','" + usuarios.Privilegios + "')";
+
+                //Mando llamar al metodo para actualizar el cual me devolvera un booleano
+                if (conexion.insertar_actualizar_eliminar(query))
+                    operacion = true;
+            }
+
+            //Retorno un booleano para saber si la operacion fue exitosa
+            return operacion;
         }
 
     }

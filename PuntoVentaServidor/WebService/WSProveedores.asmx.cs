@@ -52,7 +52,7 @@ namespace PuntoVentaServidor.WebService
             Boolean operacion = false;
 
             //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo 
-            proveedores = JsonConvert.DeserializeObject<Proveedores>(json);
+            proveedores = JsonConvert.DeserializeObject<Proveedores>(json.Replace("[", "").Replace("]", ""));
 
             // Verifico si la conexion es correcta
             if (conexion.connection()) {
@@ -101,7 +101,7 @@ namespace PuntoVentaServidor.WebService
             Boolean operacion = false;
 
             //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo 
-            proveedores = JsonConvert.DeserializeObject<Proveedores>(json);
+            proveedores = JsonConvert.DeserializeObject<Proveedores>(json.Replace("[", "").Replace("]", ""));
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
