@@ -12,8 +12,8 @@ namespace PuntoVentaServidor.Modelos
         private string apellido;
         private string telefono;
         private string fechaIngreso;
-        private int departamentos_Id;
-        private int puestos_Id;
+        private string departamento;
+        private string puesto;
 
         public Empleados() { }
 
@@ -42,14 +42,14 @@ namespace PuntoVentaServidor.Modelos
             set => fechaIngreso = value;
         }
 
-        public int Departamentos_Id {
-            get => departamentos_Id;
-            set => departamentos_Id = value;
+        public string Departamento {
+            get => departamento;
+            set => departamento = value;
         }
 
-        public int Puestos_Id {
-            get => puestos_Id;
-            set => puestos_Id = value;
+        public string Puesto {
+            get => puesto;
+            set => puesto = value;
         }
 
     }

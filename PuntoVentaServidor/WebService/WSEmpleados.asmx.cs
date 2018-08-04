@@ -31,15 +31,17 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public String ConsultarEmpleados()
+        public String ConsultarEmpleados(string usuario)
         {
             string json = "";
+
+            usuarios.Usuario = usuario;
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
             {
                 // Creo el query que mandare
-                String query = "call ConsultarEmpleados()";
+                String query = "call ConsultarEmpleados('" + usuarios.Usuario + "')";
 
                 // Mando llamar el metodo de MYSQLConexion el cual me devuelve un datatable y lo serializo
                 json = JsonConvert.SerializeObject(conexion.consulta_busqueda(query));
@@ -50,12 +52,13 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public Boolean InsertarEmpleados(string json)
+        public Boolean InsertarEmpleados(string jsonEmpleado, string jsonUsuario)
         {
             Boolean operacion = false;
 
             //Desserializo la cadena que manda el cliente en formato json y lo convierto en el modelo que tengo
-            empleados = JsonConvert.DeserializeObject<Empleados>(json.Replace("[", "").Replace("]", ""));
+            empleados = JsonConvert.DeserializeObject<Empleados>(jsonEmpleado.Replace("[", "").Replace("]", ""));
+            usuarios = JsonConvert.DeserializeObject<Usuarios>(jsonUsuario.Replace("[", "").Replace("]", ""));
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
@@ -64,7 +67,7 @@ namespace PuntoVentaServidor.WebService
                 // Creo el query que mandare
                 String query = "call InsertarEmpleado('" + empleados.Nombre + "','"
                     + empleados.Apellido + "','" + empleados.Telefono + "','" + empleados.FechaIngreso + "','"
-                    + empleados.Departamentos_Id + "','" + empleados.Puestos_Id + "','"
+                    + empleados.Departamento + "','" + empleados.Puesto + "','"
                     + usuarios.Usuario + "','" + usuarios.Password + "','" + usuarios.Privilegios + "')";
 
                 //Mando llamar al metodo para inssertar el cual me devolvera un booleano 
@@ -115,7 +118,7 @@ namespace PuntoVentaServidor.WebService
 
                 String query = "call ActualizarEmpleado('" + empleados.Id.ToString() + "','" + empleados.Nombre + "','"
                     + empleados.Apellido + "','" + empleados.Telefono + "','" + empleados.FechaIngreso + "','"
-                    + empleados.Departamentos_Id + "','" + empleados.Puestos_Id + "','" + usuarios.Id + "','"
+                    + empleados.Departamento + "','" + empleados.Puesto + "','" + usuarios.Id + "','"
                     + usuarios.Usuario + "','" + usuarios.Password + "','" + usuarios.Privilegios + "')";
 
                 //Mando llamar al metodo para actualizar el cual me devolvera un booleano
@@ -128,16 +131,18 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public String BuscarEmpleado(string busqueda)
+        public String BuscarEmpleado(string busqueda, string usuario)
         {
             string json = "";
+
+            usuarios.Usuario = usuario;
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
             {
 
                 // Creo el query que mandare
-                String query = "call BusquedaEmpleado('" + busqueda + "')";
+                String query = "call BusquedaEmpleados('" + busqueda + "','" + usuarios.Usuario +"')";
 
                 // Mando llamar el metodo de MYSQLConexion el cual me devuelve un datatable y lo serializo
                 json = JsonConvert.SerializeObject(conexion.consulta_busqueda(query));
