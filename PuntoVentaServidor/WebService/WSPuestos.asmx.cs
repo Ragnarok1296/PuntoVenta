@@ -72,18 +72,18 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public Boolean EliminarPuesto(int id)
+        public Boolean EliminarPuesto(string puesto)
         {
             Boolean operacion = false;
 
-            puestos.Id = id;
+            puestos.Puesto = puesto;
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
             {
 
                 // Creo el query que mandare
-                String query = "call EliminarPuesto('" + puestos.Id.ToString() + "')";
+                String query = "call EliminarPuesto('" + puestos.Puesto + "')";
 
                 //Mando llamar al metodo para eliminar el cual me devolvera un booleano 
                 if (conexion.insertar_actualizar_eliminar(query))

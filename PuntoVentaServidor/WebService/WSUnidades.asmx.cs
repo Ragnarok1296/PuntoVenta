@@ -83,7 +83,7 @@ namespace PuntoVentaServidor.WebService
             {
 
                 // Creo el query que mandare
-                String query = "call EliminarUnidade('" + unidades.Id.ToString() + "')";
+                String query = "call EliminarUnidad('" + unidades.Id.ToString() + "')";
 
                 //Mando llamar al metodo para eliminar el cual me devolvera un booleano
                 if (conexion.insertar_actualizar_eliminar(query))

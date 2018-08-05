@@ -59,7 +59,7 @@ namespace PuntoVentaServidor.WebService
             {
 
                 // Creo el query que mandare
-                String query = "call InsertarProveedor('" + departamentos.Departamento + "')";
+                String query = "call InsertarDepartamento('" + departamentos.Departamento + "')";
 
                 //Mando llamar al metodo para inssertar el cual me devolvera un booleano
                 if (conexion.insertar_actualizar_eliminar(query))
@@ -72,18 +72,18 @@ namespace PuntoVentaServidor.WebService
         }
 
         [WebMethod]
-        public Boolean EliminarDepartamento(int id)
+        public Boolean EliminarDepartamento(string departamento)
         {
             Boolean operacion = false;
 
-            departamentos.Id = id;
+            departamentos.Departamento = departamento;
 
             // Verifico si la conexion es correcta
             if (conexion.connection())
             {
 
                 // Creo el query que mandare
-                String query = "call EliminarProveedor('" + departamentos.Id.ToString() + "')";
+                String query = "call EliminarDepartamento('" + departamentos.Departamento + "')";
 
                 //Mando llamar al metodo para eliminar el cual me devolvera un booleano
                 if (conexion.insertar_actualizar_eliminar(query))
