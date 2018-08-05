@@ -60,10 +60,10 @@ namespace PuntoVentaServidor.WebService
             {
 
                 // Creo el query que mandare
-                String query = "call InsertarProducto('" + productos.Nombre + "','"
+                String query = "call InsertarProducto('" + productos.Codigo + "','" + productos.Nombre + "','"
                     + productos.Marca + "','" + productos.Descripcion + "','" + productos.CostoCompra.ToString() + "','"
                     + productos.CostoVenta.ToString() + "','" + productos.Stock.ToString() + "','"
-                    + productos.Proveedores_Id.ToString() + "','" + productos.Departamentos_Id.ToString() + "','" + productos.Unidades_Id.ToString() + "')";
+                    + productos.Proveedor + "','" + productos.Departamento + "','" + productos.Unidad + "')";
 
                 //Mando llamar al metodo para inssertar el cual me devolvera un booleano 
                 if (conexion.insertar_actualizar_eliminar(query))
@@ -110,10 +110,10 @@ namespace PuntoVentaServidor.WebService
             if (conexion.connection())
             {
 
-                String query = "call ActualizarProducto('" + productos.Id.ToString() + "','" + productos.Nombre + "','"
+                String query = "call ActualizarProducto('" + productos.Id.ToString() + "','" + productos.Codigo + "','" + productos.Nombre + "','"
                     + productos.Marca + "','" + productos.Descripcion + "','" + productos.CostoCompra.ToString() + "','"
                     + productos.CostoVenta.ToString() + "','" + productos.Stock.ToString() + "','"
-                    + productos.Proveedores_Id.ToString() + "','" + productos.Departamentos_Id.ToString() + "','" + productos.Unidades_Id.ToString() + "')";
+                    + productos.Proveedor + "','" + productos.Departamento + "','" + productos.Unidad + "')";
 
                 //Mando llamar al metodo para actualizar el cual me devolvera un booleano
                 if (conexion.insertar_actualizar_eliminar(query))
