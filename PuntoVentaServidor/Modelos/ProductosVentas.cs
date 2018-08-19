@@ -8,9 +8,9 @@ namespace PuntoVentaServidor.Modelos
     public class ProductosVentas
     {
         private int id;
-        private float precioUnitario;
+        private Double precioUnitario;
         private int cantidad;
-        private float precioTotal;
+        private Double precioTotal;
         private int productos_Id;
         private int ventas_Id;
 
@@ -21,7 +21,7 @@ namespace PuntoVentaServidor.Modelos
             set => id = value;
         }
 
-        public float PrecioUnitario {
+        public Double PrecioUnitario {
             get => precioUnitario;
             set => precioUnitario = value;
         }
@@ -29,7 +29,7 @@ namespace PuntoVentaServidor.Modelos
         public int Cantidad {
             get => cantidad; set => cantidad = value; }
 
-        public float PrecioTotal {
+        public Double PrecioTotal {
             get => precioTotal;
             set => precioTotal = value;
         }

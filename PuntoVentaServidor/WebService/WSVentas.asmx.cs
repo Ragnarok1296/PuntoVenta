@@ -63,7 +63,7 @@ namespace PuntoVentaServidor.WebService
 
                 // Creo el query que mandare
                 String query = "call InsertarVentaGeneral('" + ventas.SubTotal.ToString() + "','"
-                    + ventas.Total.ToString() + "','" + ventas.FechaVenta + "','" + ventas.Empleados_Id.ToString() + "')";
+                    + ventas.Total.ToString() + "','" + ventas.FechaVenta + "','" + ventas.Empleados + "')";
 
                 //Mando llamar al metodo para inssertar el cual me devolvera un booleano 
                 if (conexion.insertar_actualizar_eliminar(query))
@@ -134,6 +134,26 @@ namespace PuntoVentaServidor.WebService
             {
                 // Creo el query que mandare
                 String query = "call VentasDetalles('" + ventas.Id + "')";
+
+                // Mando llamar el metodo de MYSQLConexion el cual me devuelve un datatable y lo serializo
+                json = JsonConvert.SerializeObject(conexion.consulta_busqueda(query));
+            }
+
+            //Retorno la cadena con formato json
+            return json;
+        }
+
+        [WebMethod]
+        public String BuscarProductoParaVenta(string busqueda)
+        {
+            string json = "";
+
+            // Verifico si la conexion es correcta
+            if (conexion.connection())
+            {
+
+                // Creo el query que mandare
+                String query = "call BusquedaProductoParaVenta('" + busqueda + "')";
 
                 // Mando llamar el metodo de MYSQLConexion el cual me devuelve un datatable y lo serializo
                 json = JsonConvert.SerializeObject(conexion.consulta_busqueda(query));
